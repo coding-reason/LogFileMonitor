@@ -27,6 +27,9 @@ namespace LogFileMonitor.Monitor
                 var read = sr.ReadLine();
                 if (read == null)
                     break;
+                if (read[0] == '.')
+                    read = Environment.CurrentDirectory + read.Substring(1);
+
                 var lfi = new LogFileInfo { fullName = read };
                 lfiList.Add(lfi);
 

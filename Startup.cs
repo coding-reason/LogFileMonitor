@@ -1,5 +1,6 @@
 using LogFileMonitor.Hubs;
 using LogFileMonitor.Monitor;
+using LogFileMonitor.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,7 +23,10 @@ namespace LogFileMonitor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<Repo>();
+            var tr = new TestRepo();
+            var rep = new Repo();
+            services.AddSingleton<TestRepo>(tr);
+            services.AddSingleton<Repo>(rep);
             services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

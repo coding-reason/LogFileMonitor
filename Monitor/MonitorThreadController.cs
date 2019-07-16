@@ -16,6 +16,7 @@ namespace LogFileMonitor.Monitor
         public MonitorThreadController(Repo repo)
         {
             this.repo = repo;
+            var notify = new INotifySurface();
         }
         private  INotifySurface notify;
         private Repo repo;
