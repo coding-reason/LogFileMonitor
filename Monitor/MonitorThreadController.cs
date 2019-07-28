@@ -9,29 +9,32 @@ using System.Linq;
 
 namespace LogFileMonitor.Monitor
 {
-    public  class MonitorThreadController
+    public class MonitorThreadController
     {
         //public static event EventHandler<FileChanged> fileChanged;
 
         public MonitorThreadController(Repo repo)
         {
             this.repo = repo;
-            var notify = new INotifySurface();
+            notify = new INotifySurface();
         }
-        private  INotifySurface notify;
+        private INotifySurface notify;
         private Repo repo;
 
-        public  bool RetainThreading { get; set; }
-        public  void InitializeMonitors()
+        public bool RetainThreading { get; set; }
+        public void InitializeMonitors()
         {
             RetainThreading = true;
             int i = 0;
-            foreach (var l in repo.lfiList) {
-                ThreadPool.QueueUserWorkItem(StartMonitor, l.index );
+            foreach (var l in repo.lfiList)
+            {
+                Console.WriteLine("starting monitor thread");
+                ThreadPool.QueueUserWorkItem(StartMonitor, l.index);
                 i++;
             }
         }
-        public  void StartMonitor(object state)
+
+        public void StartMonitor(object state)
         {
             object array = state as object;
             int fileId = Convert.ToInt32(state);
@@ -39,40 +42,48 @@ namespace LogFileMonitor.Monitor
             string logFileName = lfi.fullName;
             long fileLength = lfi.length;
 
-            var fs = new FileStream(logFileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            fileLength = fs.Length;
-            lfi.length = fs.Length;
+            FileStream fs;
+
+
+            Console.WriteLine("Monitor started:");
             while (RetainThreading)
             {
-                if (fileLength != fs.Length)
+                fs = null;
+                lock (Program.fileLock)
                 {
-                    fs.Seek(fileLength, 0);
-                    using (StreamReader sr = new StreamReader(fs))
+                    using (fs = new FileStream(logFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                     {
-                        bool hasData = true;
-                        var lines = new List<string>();
-                        while (hasData)
+                        fs.Seek(fileLength, 0);
+                        if (fileLength != fs.Length)
                         {
-                            var line = sr.ReadLine();
-                            if (line == null)
+                            using (StreamReader sr = new StreamReader(fs))
                             {
-                                hasData = false;
-                                break;
-                            }
-                            else
-                            {
-                                lines.Add(line);
+                                bool hasData = true;
+                                var lines = new List<string>();
+                                while (hasData)
+                                {
+                                    var line = sr.ReadLine();
+                                    if (line == null)
+                                    {
+                                        hasData = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        lines.Add(line);
+                                    }
+                                }
+                                Console.WriteLine("notifying change:");
+                                notify.Notify(fileId, lines.ToArray());
+                                fileLength = fs.Length;
                             }
                         }
-                        notify.Notify(fileId, lines.ToArray());
-                        fileLength = fs.Length;
+                        Thread.Sleep(200);
                     }
                 }
-
-                Thread.Sleep(200);
             }
-
-            
         }
     }
 }
+
+

@@ -16,7 +16,8 @@ namespace LogFileMonitor
         {
             CreateWebHostBuilder(args).Build().Run();
         }
-
+        public static readonly object fileLock = new object();
+        
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();

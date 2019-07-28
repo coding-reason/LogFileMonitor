@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HubService} from '../hub.service';
+import {LineData} from '../models/lineModel';
 
 @Component({
   selector: 'app-home',
@@ -10,5 +12,11 @@ export class HomeComponent {
     }
     */
 
+  lineData: LineData[];
+  constructor(hubService: HubService) {
+    hubService.addLines.subscribe(a => {
+      this.lineData.push(a);
+    });
 
+  }
 }

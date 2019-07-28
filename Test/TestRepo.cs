@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FoxExtensions;
-
+using LogFileMonitor;
 namespace LogFileMonitor.Test
 {
     public sealed class TestRepo
@@ -16,18 +16,32 @@ namespace LogFileMonitor.Test
         }
         public void beginWriting(object o)
         {
-            var fs = new FileStream(Environment.CurrentDirectory + "\\Test\\testFile.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
-            fs.SetLength(0);
-            int cnt = 0;
-            int sleepX = 100;
+            var fn = Environment.CurrentDirectory + "\\Test\\testFile5.txt";
+            File.Delete(fn);
+            File.Create(fn);
             while (true)
             {
-                fs.Write($"write {DateTime.Now} \r\n".ToBytes());
-                Thread.Sleep(sleepX);
-                cnt++;
-                if (cnt == 20)
+                lock (Program.fileLock)
                 {
-                    sleepX = 30000;
+                    using (var fs = new FileStream(fn, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
+                    {
+
+                        int cnt = 0;
+                        if (cnt == 0)
+                            fs.SetLength(0);
+                        int sleepX = 100;
+
+                        fs.Write($"write {DateTime.Now} \r\n".ToBytes());
+                        fs.Flush();
+
+                        Thread.Sleep(sleepX);
+                        cnt++;
+                        if (cnt == 20)
+                        {
+                            sleepX = 30000;
+                        }
+                        Console.WriteLine("writing test file");
+                    }
                 }
 
             }

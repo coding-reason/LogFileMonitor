@@ -8,17 +8,17 @@ import {LineData} from './models/lineModel';
 @Injectable({
   providedIn: 'root'
 })
-
 export class HubService {
+
   private hubConnection: HubConnection;
   public addLines = new Subject<LineData>();
   public onConnected = new Subject<boolean>();
   private uri: string
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    console.log("baseuri: " +  baseUrl);
     this.baseUri = baseUrl;
     this.setupHub();
   }
-
   baseUri: string;
   setupHub() {
     this.createConnection();
@@ -48,9 +48,9 @@ export class HubService {
       });
   }
   private registerOnServerEvents(): void {
-
     this.hubConnection.on('addlines', (fileId: number, lines: string[]) => {
       this.addLines.next({ fileId: fileId, lines: lines });
     });
   }
 }
+
