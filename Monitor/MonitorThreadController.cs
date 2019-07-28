@@ -43,12 +43,14 @@ namespace LogFileMonitor.Monitor
             long fileLength = lfi.length;
 
             FileStream fs;
+            var st = Thread.CurrentThread.ManagedThreadId;
+            Console.WriteLine($"StartMonitor {st}");
 
 
             Console.WriteLine("Monitor started:");
             while (RetainThreading)
             {
-                fs = null;
+                
                 lock (Program.fileLock)
                 {
                     using (fs = new FileStream(logFileName, FileMode.Open, FileAccess.Read, FileShare.Read))

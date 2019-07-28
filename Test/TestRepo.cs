@@ -16,6 +16,8 @@ namespace LogFileMonitor.Test
         }
         public void beginWriting(object o)
         {
+            var st = Thread.CurrentThread.ManagedThreadId;
+            Console.WriteLine($"{st}");
             var fn = Environment.CurrentDirectory + "\\Test\\testFile5.txt";
             File.Delete(fn);
             File.Create(fn);
