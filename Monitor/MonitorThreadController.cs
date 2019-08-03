@@ -48,13 +48,13 @@ namespace LogFileMonitor.Monitor
 
 
             Console.WriteLine("Monitor started:");
+            fs = new FileStream(logFileName, FileMode.Open, FileAccess.Read, FileShare.Read);
             while (RetainThreading)
             {
                 
-                lock (Program.fileLock)
-                {
-                    using (fs = new FileStream(logFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
+                //lock (Program.fileLock)
+                //{
+                   
                         fs.Seek(fileLength, 0);
                         if (fileLength != fs.Length)
                         {
@@ -81,8 +81,8 @@ namespace LogFileMonitor.Monitor
                             }
                         }
                         Thread.Sleep(200);
-                    }
-                }
+                   
+                //}
             }
         }
     }

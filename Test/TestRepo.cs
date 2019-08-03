@@ -20,11 +20,12 @@ namespace LogFileMonitor.Test
             Console.WriteLine($"{st}");
             var fn = Environment.CurrentDirectory + "\\Test\\testFile5.txt";
             File.Delete(fn);
-            File.Create(fn);
+            var x = File.Create(fn);
+            x.Close();
             while (true)
             {
-                lock (Program.fileLock)
-                {
+                //lock (Program.fileLock)
+                //{
                     using (var fs = new FileStream(fn, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
                     {
 
@@ -44,7 +45,7 @@ namespace LogFileMonitor.Test
                         }
                         Console.WriteLine("writing test file");
                     }
-                }
+                //}
 
             }
             
