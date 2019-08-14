@@ -22,6 +22,7 @@ namespace LogFileMonitor.Test
             File.Delete(fn);
             var x = File.Create(fn);
             x.Close();
+            int xcnt = 0;
             while (true)
             {
                 //lock (Program.fileLock)
@@ -41,9 +42,9 @@ namespace LogFileMonitor.Test
                         cnt++;
                         if (cnt == 20)
                         {
-                            sleepX = 30000;
+                            sleepX = 2000;
                         }
-                        Console.WriteLine("writing test file");
+                        Console.WriteLine($"writing test file {xcnt++}");
                     }
                 //}
 
