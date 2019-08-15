@@ -20,11 +20,14 @@ namespace LogFileMonitor
 
         public IConfiguration Configuration { get; }
 
+        private TestRepo tr;
+
+        private Repo rep;
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var tr = new TestRepo();
-            var rep = new Repo();
+            tr = new TestRepo();
+            rep = new Repo();
             services.AddSingleton<TestRepo>(tr);
             services.AddSingleton<Repo>(rep);
             services.AddSignalR();
@@ -33,8 +36,9 @@ namespace LogFileMonitor
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "LogFileMonitorClient";
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,31 +54,33 @@ namespace LogFileMonitor
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            app.UseCors(config =>
+            {
+                config.WithOrigins("http://localhost:4200", "https://eveview.foxjazz.net");
+                config.AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+            });
+            //app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+          
             app.UseSignalR(routes => { routes.MapHub<LogChangeHub>("/logchanges"); });
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
 
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
-                spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                spa.Options.SourcePath = "LogFileMonitorClient";
+                //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 //if (env.IsDevelopment())
                 //{
                 //    spa.UseAngularCliServer(npmScript: "start");
                 //}
             });
+            tr.start();
+            rep.start();
         }
     }
 }

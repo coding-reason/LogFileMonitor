@@ -12,6 +12,11 @@ namespace LogFileMonitor.Test
     {
         public TestRepo()
         {
+            
+        }
+
+        public void start()
+        {
             ThreadPool.QueueUserWorkItem(beginWriting, 1);
         }
         public void beginWriting(object o)

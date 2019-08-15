@@ -12,8 +12,14 @@ namespace LogFileMonitor.Monitor
     {
         public Repo()
         {
-            this.lfiList = new List<LogFileInfo>();
-            this.PopulateLogFiles();
+            lfiList = new List<LogFileInfo>();
+            
+            
+        }
+
+        public void start()
+        {
+            PopulateLogFiles();
             threadController = new MonitorThreadController(this);
             threadController.InitializeMonitors();
         }
