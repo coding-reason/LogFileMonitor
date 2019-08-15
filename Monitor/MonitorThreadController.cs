@@ -18,27 +18,30 @@ namespace LogFileMonitor.Monitor
             this.repo = repo;
             notify = new INotifySurface();
         }
-        private INotifySurface notify;
+        private static INotifySurface notify;
         private Repo repo;
-
-        public bool RetainThreading { get; set; }
-        public void InitializeMonitors()
+        
+        public static bool RetainThreading { get; set; }
+        public void InitializeMonitors(List<LogFileInfo> list)
         {
             RetainThreading = true;
             int i = 0;
-            foreach (var l in repo.lfiList)
+            
+            foreach (var l in list)
             {
                 Console.WriteLine("starting monitor thread");
+                Thread newThread = new Thread(LogFileMonitor.Monitor.MonitorThreadController.StartMonitor);
+                newThread.Start(42);
                 ThreadPool.QueueUserWorkItem(StartMonitor, l.index);
                 i++;
             }
         }
 
-        public void StartMonitor(object state)
+        public static void StartMonitor(object state)
         {
             object array = state as object;
             int fileId = Convert.ToInt32(state);
-            var lfi = repo.lfiList.First(a => a.index == fileId);
+            var lfi = LogFileMonitor.Monitor.Repo.lfiList.First(a => a.index == fileId);
             string logFileName = lfi.fullName;
             long fileLength = lfi.length;
 

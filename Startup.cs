@@ -66,7 +66,8 @@ namespace LogFileMonitor
           
             app.UseSignalR(routes => { routes.MapHub<LogChangeHub>("/logchanges"); });
             app.UseMvc();
-
+            tr.start();
+            rep.start();
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -79,8 +80,7 @@ namespace LogFileMonitor
                 //    spa.UseAngularCliServer(npmScript: "start");
                 //}
             });
-            tr.start();
-            rep.start();
+          
         }
     }
 }

@@ -17,9 +17,11 @@ namespace LogFileMonitor.Test
 
         public void start()
         {
-            ThreadPool.QueueUserWorkItem(beginWriting, 1);
+            Thread newThread = new Thread(LogFileMonitor.Test.TestRepo.beginWriting);
+            newThread.Start(42);
+            //ThreadPool.QueueUserWorkItem(beginWriting, 1);
         }
-        public void beginWriting(object o)
+        public static void beginWriting(object o)
         {
             var st = Thread.CurrentThread.ManagedThreadId;
             Console.WriteLine($"{st}");
