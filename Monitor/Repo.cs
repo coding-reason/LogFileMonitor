@@ -20,19 +20,19 @@ namespace LogFileMonitor.Monitor
         
         public void start()
         {
-            Thread newThread = new Thread(LogFileMonitor.Monitor.Repo.PopulateLogFiles);
-            newThread.Start(42);
+            
+            PopulateLogFiles();
             threadController = new MonitorThreadController(this);
             threadController.InitializeMonitors(lfiList);
         }
         MonitorThreadController threadController;
         public static List<LogFileInfo> lfiList { get; set; }
 
-        public static void PopulateLogFiles(Object a)
+        public void PopulateLogFiles()
         {
             var st = Thread.CurrentThread.ManagedThreadId;
             Console.WriteLine($"Repo {st}");
-            Thread.Sleep(800000);
+            
         
             lock (Program.fileLock)
             {

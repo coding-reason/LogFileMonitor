@@ -30,9 +30,8 @@ namespace LogFileMonitor.Monitor
             foreach (var l in list)
             {
                 Console.WriteLine("starting monitor thread");
-                Thread newThread = new Thread(LogFileMonitor.Monitor.MonitorThreadController.StartMonitor);
+                Thread newThread = new Thread(StartMonitor);
                 newThread.Start(42);
-                ThreadPool.QueueUserWorkItem(StartMonitor, l.index);
                 i++;
             }
         }

@@ -30,6 +30,7 @@ namespace LogFileMonitor.Test
             var x = File.Create(fn);
             x.Close();
             int xcnt = 0;
+            int sleepX = 100;
             while (true)
             {
                 //lock (Program.fileLock)
@@ -37,17 +38,12 @@ namespace LogFileMonitor.Test
                     using (var fs = new FileStream(fn, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
                     {
 
-                        int cnt = 0;
-                        if (cnt == 0)
-                            fs.SetLength(0);
-                        int sleepX = 100;
-
                         fs.Write($"write {DateTime.Now} \r\n".ToBytes());
                         fs.Flush();
 
                         Thread.Sleep(sleepX);
-                        cnt++;
-                        if (cnt == 20)
+                        
+                        if (xcnt >= 20)
                         {
                             sleepX = 2000;
                         }

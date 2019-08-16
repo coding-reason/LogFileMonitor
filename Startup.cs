@@ -64,11 +64,11 @@ namespace LogFileMonitor
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
           
-            app.UseSignalR(routes => { routes.MapHub<LogChangeHub>("/logchanges"); });
+            app.UseSignalR(routes => { routes.MapHub<LogChangeHub>("/logchangehub"); });
             app.UseMvc();
             tr.start();
             rep.start();
-            app.UseSpa(spa =>
+            /*app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
@@ -79,7 +79,7 @@ namespace LogFileMonitor
                 //{
                 //    spa.UseAngularCliServer(npmScript: "start");
                 //}
-            });
+            });*/
           
         }
     }
