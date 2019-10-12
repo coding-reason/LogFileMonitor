@@ -8,21 +8,34 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading;
+using Microsoft.Extensions.Hosting;
+
 namespace LogFileMonitor
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var tid = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine($"Main: {tid}");
-            CreateWebHostBuilder(args).Build().Run();
-            
+            var host = new HostBuilder()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseKestrel(serverOptions =>
+            {
+                // Set properties and call methods on options
+            })
+            .UseIISIntegration()
+            .UseStartup<Startup>();
+        })
+        .Build();
+
+            host.Run();
+
         }
         public static readonly object fileLock = new object();
-        
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static bool ready;
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseStartup<Startup>();
     }
 }

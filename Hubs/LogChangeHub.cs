@@ -7,13 +7,15 @@ using LogFileMonitor.Interfaces;
 
 namespace LogFileMonitor.Hubs
 {
-    public class LogChangeHub : Hub
+    public class LogChangeHub : Hub<ILogChangeHub>
     {
         
-            public Task AddLines(int fileId, string[] lines)
-            {
-                return Clients.All.SendAsync("AddLines", fileId, lines);
-            }
-
+      
+        public Task AddLines(int fileId, string[] lines)
+        {
+            
+            return Clients.All.AddLines(fileId, lines);
+        }
+     
     }
 }

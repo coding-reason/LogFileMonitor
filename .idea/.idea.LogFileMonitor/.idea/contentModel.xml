@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\fox21\.Rider2019.1\Config\consoles\ide" t="IncludeRecursive" />
+    <e p="C:\Users\fox21\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\fox21\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_LogFileMonitor.-1674691894.00" t="ExcludeRecursive" />
+    <e p="G:\Code\LogFileMonitor" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Config" t="Include">
+        <e p="LogFileNames.txt" t="Include" />
+      </e>
+      <e p="Controllers" t="Include">
+        <e p="LogFileListController.cs" t="Include" />
+        <e p="SampleDataController.cs" t="Include" />
+      </e>
+      <e p="FoxExtensions.cs" t="Include" />
+      <e p="Hubs" t="Include">
+        <e p="LogChangeHub.cs" t="Include" />
+      </e>
+      <e p="Interfaces" t="Include">
+        <e p="INotifySurface.cs" t="Include" />
+      </e>
+      <e p="LogFileMonitor.csproj" t="IncludeRecursive" />
+      <e p="LogFileMonitor.sln" t="IncludeFlat" />
+      <e p="logFileMonitorClient\node_modules\@angular\animations" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\cli" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\common" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\compiler" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\compiler-cli" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\core" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\forms" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\platform-browser" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\platform-browser-dynamic" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular\router" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@angular-devkit\build-angular" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@aspnet\signalr" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\@types" t="IncludeRecursive">
+        <e p="events" t="IncludeRecursive" />
+        <e p="jasmine" t="IncludeRecursive" />
+        <e p="jasminewd2" t="IncludeRecursive" />
+        <e p="minimatch" t="IncludeRecursive" />
+        <e p="node" t="IncludeRecursive" />
+        <e p="source-list-map" t="IncludeRecursive" />
+      </e>
+      <e p="logFileMonitorClient\node_modules\codelyzer" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\jasmine-core" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\jasmine-spec-reporter" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\karma" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\karma-chrome-launcher" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\karma-coverage-istanbul-reporter" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\karma-jasmine" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\karma-jasmine-html-reporter" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\protractor" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\rxjs" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\source-map" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\ts-node" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\tslib" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\tslint" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.collection.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.core.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.generator.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.iterable.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.promise.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.proxy.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.reflect.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.symbol.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2016.array.include.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2016.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2016.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.intl.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.object.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.string.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.asynciterable.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.intl.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.promise.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2018.regexp.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.array.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.object.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.string.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2019.symbol.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2020.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2020.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2020.string.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es2020.symbol.wellknown.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es5.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.es6.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.array.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.bigint.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.full.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.intl.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.esnext.symbol.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.scripthost.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.webworker.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\typescript\lib\lib.webworker.importscripts.d.ts" t="IncludeRecursive" />
+      <e p="logFileMonitorClient\node_modules\zone.js" t="IncludeRecursive" />
+      <e p="Models" t="Include">
+        <e p="LogFileInfo.cs" t="Include" />
+      </e>
+      <e p="Monitor" t="Include">
+        <e p="MonitorThreadController.cs" t="Include" />
+        <e p="NotifySurface.cs" t="Include" />
+        <e p="Repo.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp2.2" t="Include">
+            <e p="LogFileMonitor.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Pages" t="Include">
+        <e p="_ViewImports.cshtml" t="Include" />
+        <e p="Error.cshtml" t="Include" />
+        <e p="Error.cshtml.cs" t="Include" />
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="README.md" t="Include" />
+      <e p="Solution Items" t="Include" />
+      <e p="Startup.cs" t="Include" />
+      <e p="Test" t="Include">
+        <e p="testFile5.txt" t="Include" />
+        <e p="TestRepo.cs" t="Include" />
+      </e>
+      <e p="wwwroot" t="Include">
+        <e p="favicon.ico" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

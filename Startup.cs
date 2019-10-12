@@ -1,13 +1,14 @@
 using LogFileMonitor.Hubs;
-using LogFileMonitor.Monitor;
+
 using LogFileMonitor.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SignalR;
 
 namespace LogFileMonitor
 {
@@ -22,27 +23,32 @@ namespace LogFileMonitor
 
         private TestRepo tr;
 
-        private Repo rep;
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            tr = new TestRepo();
-            rep = new Repo();
-            services.AddSingleton<TestRepo>(tr);
-            services.AddSingleton<Repo>(rep);
-            services.AddSignalR();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "LogFileMonitorClient";
-            });
             
+        
+            
+           
+            // services.AddSignalR();
+            services.AddRazorPages();
+            services.AddCors();
+            
+            services.AddSignalR();
+            // services.AddSingleton<Repo>(rep);
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+              
+            // In production, the Angular files will be served from this directory
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "LogFileMonitorClient";
+            //});
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -62,12 +68,15 @@ namespace LogFileMonitor
             //app.UseHttpsRedirection();
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-          
-            app.UseSignalR(routes => { routes.MapHub<LogChangeHub>("/logchangehub"); });
-            app.UseMvc();
-            tr.start();
-            rep.start();
+            app.UseRouting();
+            
+            app.UseEndpoints(ends =>
+            {
+                ends.MapHub<LogChangeHub>("/logchangehub");
+                // ends.MapControllerRoute("default", "{controler=Home}/{action=index }/{id?}");
+            });
+           
+            //rep.start();
             /*app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -80,7 +89,7 @@ namespace LogFileMonitor
                 //    spa.UseAngularCliServer(npmScript: "start");
                 //}
             });*/
-          
+
         }
     }
 }
